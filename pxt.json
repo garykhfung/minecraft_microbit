@@ -4,15 +4,18 @@
     "description": "",
     "dependencies": {
         "core": "*",
-        "radio": "*"
+        "radio": "*",
+        "minecraft_microbit": "workspace:69fac8c0-4146-4b38-4928-0161db3084ab"
     },
     "files": [
         "README.md",
-        "main.ts"
+        "main.ts",
+        "minecraft.ts",
+        "custom.ts"
     ],
     "testFiles": [
         "test.ts"
     ],
     "public": false,
-    "additionalFilePaths": []
+    "installedVersion": "workspace:69fac8c0-4146-4b38-4928-0161db3084ab"
 }
