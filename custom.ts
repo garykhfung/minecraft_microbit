@@ -28,12 +28,12 @@ namespace minecraft {
      * fix digit to 2 decimal place 
      * parameter: single digit value
      */
-    function fixLenInt(v: number): string{
+    function fixLenInt(v: number): string {
         let r = "" + v;
-       while (r.length < 2) {
-           r = "0" + r;
-       }
-       return r;
+        while (r.length < 2) {
+            r = "0" + r;
+        }
+        return r;
     }
 
     /**
@@ -55,7 +55,7 @@ namespace minecraft {
      * parameter: name of block
      */
     //% block
-    export function createBlock(name: string): void{
+    export function createBlock(name: string): void {
         let message: string;
         let length = name.length;
         message = "02" + length + name;
@@ -84,7 +84,7 @@ namespace minecraft {
     export function resizeMeter(name: string, x: number, y: number, z: number): void {
         let message: string;
         let length = name.length;
-        message = "11" + length + fixLenInt(x) + fixLenInt(y) + fixLenInt(z);
+        message = "11" + length + name + fixLenInt(x) + fixLenInt(y) + fixLenInt(z);
         radio.sendString(fillPacket(message));
     }
 
@@ -97,7 +97,7 @@ namespace minecraft {
     export function resizeBlock(name: string, x: number, y: number, z: number): void {
         let message: string;
         let length = name.length;
-        message = "12" + length + fixLenInt(x) + fixLenInt(y) + fixLenInt(z);
+        message = "12" + length + name + fixLenInt(x) + fixLenInt(y) + fixLenInt(z);
         radio.sendString(fillPacket(message));
     }
 
@@ -115,7 +115,7 @@ namespace minecraft {
     export function moveMeter(name: string, x: number, y: number, z: number): void {
         let message: string;
         let length = name.length;
-        message = "21" + length + fixLenInt(x) + fixLenInt(y) + fixLenInt(z);
+        message = "21" + length + name + fixLenInt(x) + fixLenInt(y) + fixLenInt(z);
         radio.sendString(fillPacket(message));
     }
 
@@ -128,7 +128,7 @@ namespace minecraft {
     export function moveBlock(name: string, x: number, y: number, z: number): void {
         let message: string;
         let length = name.length;
-        message = "22" + length + fixLenInt(x) + fixLenInt(y) + fixLenInt(z);
+        message = "22" + length + name + fixLenInt(x) + fixLenInt(y) + fixLenInt(z);
         radio.sendString(fillPacket(message));
     }
 
@@ -141,7 +141,7 @@ namespace minecraft {
     export function moveThermometer(name: string, x: number, y: number, z: number): void {
         let message: string;
         let length = name.length;
-        message = "29" + length + fixLenInt(x) + fixLenInt(y) + fixLenInt(z);
+        message = "29" + length + name + fixLenInt(x) + fixLenInt(y) + fixLenInt(z);
         radio.sendString(fillPacket(message));
     }
 
@@ -154,20 +154,20 @@ namespace minecraft {
     export function updateMeter(name: string, v: number): void {
         let message: string;
         let length = name.length;
-        message = "31" + length + fixLenInt(v);
+        message = "31" + length + name + fixLenInt(v);
         radio.sendString(fillPacket(message));
     }
 
     /**
-     * update block
+     * update block status
      * update by name 
      * parameter: name of block, value to be updated
      */
     //% block
-    export function updateBlock(name: string, v: number): void {
+    export function changeBlock(name: string): void {
         let message: string;
         let length = name.length;
-        message = "32" + length + fixLenInt(v);
+        message = "32" + length + name + "00";
         radio.sendString(fillPacket(message));
     }
 
@@ -180,7 +180,7 @@ namespace minecraft {
     export function updateThermometer(name: string, v: number): void {
         let message: string;
         let length = name.length;
-        message = "33" + length + fixLenInt(v);
+        message = "39" + length + name + fixLenInt(v);
         radio.sendString(fillPacket(message));
     }
 
@@ -194,7 +194,7 @@ namespace minecraft {
     export function chatMeter(name: string, v: string): void {
         let message: string;
         let length = name.length;
-        message = "41" + length + v;
+        message = "41" + length + name + v;
         radio.sendString(fillPacket(message));
     }
 
@@ -207,7 +207,7 @@ namespace minecraft {
     export function chatBlock(name: string, v: string): void {
         let message: string;
         let length = name.length;
-        message = "42" + length + v;
+        message = "42" + length + name + v;
         radio.sendString(fillPacket(message));
     }
 
@@ -220,7 +220,7 @@ namespace minecraft {
     export function chatThermometer(name: string, v: string): void {
         let message: string;
         let length = name.length;
-        message = "43" + length + v;
+        message = "43" + length + name + v;
         radio.sendString(fillPacket(message));
     }
 }
