@@ -102,17 +102,9 @@ namespace minecraft {
     }
 
     /**
-     * resize thermometer
-     * resize thermometer by name
-     * parameter: name of thermometer, sizeX, sizeY, sizeZ
+     * thermometer need not to be resized, fixed size
      */
-    //% block
-    export function resizeThermometer(name: string, x: number, y: number, z: number): void {
-        let message: string;
-        let length = name.length;
-        message = "19" + length + fixLenInt(x) + fixLenInt(y) + fixLenInt(z);
-        radio.sendString(fillPacket(message));
-    }
+
 
     /**
      * move meter
